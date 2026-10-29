@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Résumé of Ebisa Indalu, Software Engineering student.">
+    <title>Ebisa Indalu | Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: #e9edf3;
+            color: #202633;
+            font: 14px/1.55 'DM Sans', sans-serif
+        }
+
+        .resume {
+            position: relative;
+            width: min(860px, calc(100% - 32px));
+            margin: 36px auto;
+            padding: 52px 60px;
+            background: #fff;
+            box-shadow: 0 18px 60px #1720331a
+        }
+
+        .print-button {
+            position: fixed;
+            right: 24px;
+            top: 24px;
+            padding: 11px 16px;
+            border: 0;
+            border-radius: 6px;
+            background: #263f73;
+            color: #fff;
+            font: 600 13px 'DM Sans', sans-serif;
+            cursor: pointer
+        }
+
+        .resume-header {
+            padding-bottom: 24px;
+            border-bottom: 2px solid #263f73
+        }
+
+        h1,
+        h2,
+        p {
+            margin-top: 0
+        }
+
+        h1 {
+            margin-bottom: 3px;
+            font: 700 32px 'Space Grotesk', sans-serif;
+            color: #16243b
+        }
+
+        .role {
+            margin: 0 0 10px;
+            color: #52637d;
+            font-size: 15px;
+            font-weight: 600
+        }
+
+        .contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px 16px;
+            color: #43516a;
+            font-size: 12px
+        }
+
+        a {
+            color: #264c85;
+            text-decoration: none
+        }
+
+        .resume-section {
+            margin-top: 24px
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #dce2eb;
+            color: #263f73;
+            font: 600 15px 'Space Grotesk', sans-serif
+        }
+
+        .resume-section p {
+            margin-bottom: 0
+        }
+
+        .education-title,
+        .project-title {
+            margin: 0 0 3px;
+            font-weight: 700;
+            color: #202633
+        }
+
+        .subtle {
+            margin: 0;
+            color: #526078
+        }
+
+        .skill-list {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 7px 12px;
+            margin: 0
+        }
+
+        .skill-list dt {
+            font-weight: 700;
+            color: #25344f
+        }
+
+        .skill-list dd {
+            margin: 0;
+            color: #46536a
+        }
+
+        .project {
+            margin-top: 12px
+        }
+
+        .project p {
+            color: #46536a
+        }
+
+        .note {
+            margin-top: 24px;
+            padding: 10px 12px;
+            background: #f1f4f8;
+            color: #526078;
+            font-size: 11px
+        }
+
+        @media(max-width:600px) {
+            .resume {
+                margin: 12px auto;
+                padding: 28px 22px
+            }
+
+            h1 {
+                font-size: 26px
+            }
+
+            .contact {
+                gap: 4px 10px
+            }
+
+            .skill-list {
+                grid-template-columns: 1fr;
+                gap: 2px
+            }
+
+            .skill-list dd {
+                margin-bottom: 8px
+            }
+
+            .print-button {
+                position: static;
+                display: block;
+                margin: 12px auto
+            }
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 14mm
+            }
+
+            body {
+                background: #fff;
+                font-size: 11pt
+            }
+
+            .resume {
+                width: auto;
+                margin: 0;
+                padding: 0;
+                box-shadow: none
+            }
+
+            .print-button {
+                display: none
+            }
+
+            .resume-header {
+                break-inside: avoid
+            }
+
+            .resume-section {
+                break-inside: avoid
+            }
+
+            a {
+                color: inherit
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="print-button" type="button" onclick="window.print()">Print / Save as PDF</button>
+    <main class="resume">
+        <header class="resume-header">
+            <div>
+                <h1>Ebisa Indalu</h1>
+                <p class="role">Software Engineering Student</p>
+                <div class="contact">
+                    <a href="https://mail.google.com/mail/?view=cm&amp;to=ebisaindalu41%40gmail.com" target="_blank"
+                        rel="noreferrer">ebisaindalu41@gmail.com</a>
+                    <a href="https://github.com/ebisa-i">github.com/ebisa-i</a>
+                    <a href="https://www.linkedin.com/in/ebisa-indalu-3b764b37a">LinkedIn</a>
+                    <span>Ethiopia</span>
+                </div>
+            </div>
+        </header>
+
+        <section class="resume-section">
+            <h2>Profile</h2>
+            <p>Software Engineering student at Bule Hora University interested in web application development. Building
+                practical skills through coursework, experimentation, and portfolio projects.</p>
+        </section>
+
+        <section class="resume-section">
+            <h2>Education</h2>
+            <p class="education-title">Bule Hora University</p>
+            <p class="subtle">Software Engineering | Current student</p>
+        </section>
+
+        <section class="resume-section">
+            <h2>Technology Areas</h2>
+            <dl class="skill-list">
+                <dt>Frontend</dt>
+                <dd>HTML, CSS, JavaScript, TypeScript, React, Tailwind CSS, Bootstrap</dd>
+                <dt>Backend</dt>
+                <dd>Node.js, Express.js, NestJS, PHP, Laravel</dd>
+                <dt>Data</dt>
+                <dd>PostgreSQL, MySQL, Prisma</dd>
+            </dl>
+        </section>
+
+        <section class="resume-section">
+            <h2>Selected Projects</h2>
+            <article class="project">
+                <p class="project-title">Personal Portfolio</p>
+                <p>Responsive portfolio website built with HTML, CSS, and JavaScript to present skills, project
+                    explorations, and contact information.</p>
+            </article>
+            <article class="project">
+                <p class="project-title">Student Management System | Concept</p>
+                <p>Exploration of an application for organizing student records and academic information.</p>
+            </article>
+            <article class="project">
+                <p class="project-title">Ecommerce Web App | Concept</p>
+                <p>Exploration of product browsing, product details, and a shopping flow.</p>
+            </article>
+            <article class="project">
+                <p class="project-title">BHU Farm Management | Concept</p>
+                <p>Exploration of organizing farm activities and related information for a university setting.</p>
+            </article>
+        </section>
+
+        <p class="note">This résumé reflects the information currently available on the portfolio. Add education dates,
+            practical experience, and verified achievements before sharing where required.</p>
+    </main>
+    <script>
+        document.querySelector(".print-button").addEventListener("click", () => window.print());
+    </script>
+</body>
+
+</html>

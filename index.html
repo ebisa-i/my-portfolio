@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Portfolio of Ebisa Indalu, Software Engineering student at Bule Hora University.">
+  <title>Ebisa Indalu | Software Engineering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .profile-photo {
+      position: relative;
+      width: 112px;
+      height: 112px;
+      margin-bottom: 24px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid #7b72ff88;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 25%, #26365a, #10192a 72%);
+      box-shadow: 0 0 0 7px #7b72ff12, 0 12px 36px #0005;
+      color: #f4f6fc;
+      font: 600 24px 'Space Grotesk', sans-serif
+    }
+
+    .profile-photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity .2s
+    }
+
+    .profile-photo.has-image img {
+      opacity: 1
+    }
+
+    @media(max-width:680px) {
+      .profile-photo {
+        width: 96px;
+        height: 96px;
+        margin-bottom: 20px
+      }
+    }
+
+    .skill-groups {
+      display: grid;
+      gap: 42px
+    }
+
+    .skill-group h3 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 22px;
+      font: 600 18px var(--display)
+    }
+
+    .skill-group h3::before {
+      content: "";
+      width: 4px;
+      height: 24px;
+      border-radius: 2px;
+      background: linear-gradient(180deg, #7b72ff, #4bb8f4)
+    }
+
+    .skill-items {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px
+    }
+
+    .skill-item {
+      min-height: 59px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #141e2d;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      transition: border-color .2s, transform .2s
+    }
+
+    .skill-item:hover {
+      transform: translateY(-2px);
+      border-color: #4bb8f466
+    }
+
+    .skill-icon {
+      flex: 0 0 32px;
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: #1b2c46;
+      color: #22c5d8;
+      font: 700 12px var(--display)
+    }
+
+    @media(max-width:850px) {
+      .skill-items {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+      }
+    }
+
+    @media(max-width:480px) {
+      .skill-items {
+        grid-template-columns: 1fr
+      }
+
+      .skill-groups {
+        gap: 32px
+      }
+    }
+
+    .project-filters {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px
+    }
+
+    .project-filters .button {
+      padding: 9px 13px;
+      color: var(--text);
+      font-size: 12px
+    }
+
+    .project-filter-status {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 12px
+    }
+
+    .projects-grid .project-card[hidden] {
+      display: none !important
+    }
+
+    .nav-resume {
+      white-space: nowrap
+    }
+
+    @media(max-width:480px) {
+      .project-filters {
+        gap: 7px
+      }
+
+      .project-filters .button {
+        padding: 9px 10px
+      }
+
+      .nav-resume {
+        display: inline-flex;
+        justify-content: center;
+        margin-top: 8px
+      }
+    }
+  </style>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Ebisa Indalu home"><span class="brand-mark">EI</span><span>Ebisa
+          <b>Indalu</b></span></a>
+      <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false"
+        aria-controls="nav-links"><span></span><span></span><span></span></button>
+      <div class="nav-links" id="nav-links">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a class="button button-small button-ghost nav-resume" href="resume.html" download="Ebisa-Indalu-Resume.html"
+          aria-label="Download résumé">Resume <span aria-hidden="true">↓</span></a>
+        <a class="button button-small button-primary nav-cta" href="#contact">Let's talk <span
+            aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero section" id="home">
+      <div class="hero-glow glow-one"></div>
+      <div class="hero-glow glow-two"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="profile-photo" role="img" aria-label="Profile picture of Ebisa Indalu"><span
+              aria-hidden="true">EI</span><img src="images/profile.jpg" alt=""></div>
+          <p class="eyebrow"><span class="status-dot"></span> SOFTWARE ENGINEERING STUDENT</p>
+          <h1>Hi, I'm <span class="gradient-text">Ebisa Indalu.</span><br>Building ideas into <span
+              class="outlined-text">digital</span> experiences.</h1>
+          <p class="hero-description">I’m a Software Engineering student at Bule Hora University, learning to create
+            useful, thoughtful web experiences with code.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">Explore my projects <span aria-hidden="true">↘</span></a>
+            <a class="button button-ghost" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="social-row">
+            <a href="https://github.com/ebisa-i" target="_blank" rel="noreferrer" aria-label="GitHub profile">GitHub
+              <span aria-hidden="true">↗</span></a>
+            <span class="social-separator">/</span>
+            <a href="https://mail.google.com/mail/?view=cm&amp;to=ebisaindalu41%40gmail.com" target="_blank"
+              rel="noreferrer">Email <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Decorative code illustration">
+          <div class="orbit orbit-a"></div>
+          <div class="orbit orbit-b"></div>
+          <div class="code-window">
+            <div class="window-top">
+              <div class="window-dots"><i></i><i></i><i></i></div><span>ebisa.js</span><span
+                class="window-lock">●</span>
+            </div>
+            <div class="code-lines" aria-hidden="true">
+              <p><span class="line-no">01</span><span class="code-purple">const</span> developer = {</p>
+              <p><span class="line-no">02</span>&nbsp; name: <span class="code-green">'Ebisa Indalu'</span>,</p>
+              <p><span class="line-no">03</span>&nbsp; studies: <span class="code-green">'Software Engineering'</span>,
+              </p>
+              <p><span class="line-no">04</span>&nbsp; skills: [<span class="code-blue">'HTML'</span>, <span
+                  class="code-blue">'CSS'</span>,</p>
+              <p><span class="line-no">05</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                  class="code-blue">'JavaScript'</span>, <span class="code-blue">'React'</span>],</p>
+              <p><span class="line-no">06</span>&nbsp; mindset: <span class="code-green">'Always learning'</span></p>
+              <p><span class="line-no">07</span>};</p>
+              <p class="code-comment"><span class="line-no">08</span>// Keep building. Keep improving.</p>
+            </div>
+            <div class="window-footer"><span><i></i> Ready to build</span><span>UTF-8</span></div>
+          </div>
+          <div class="floating-chip chip-top"><span class="chip-icon">✳</span> Curious by nature</div>
+          <div class="floating-chip chip-bottom"><span class="chip-icon chip-blue">⌘</span> Turning ideas into code
+          </div>
+          <div class="hero-stamp">LEARN<br>BUILD<br><span>REPEAT ↗</span></div>
+        </div>
+      </div>
+      <div class="container hero-bottom"><span>BASED IN ETHIOPIA</span><span class="hero-bottom-line"></span><span>OPEN
+          TO LEARNING & COLLABORATION</span></div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="container two-column">
+        <div>
+          <p class="eyebrow">01 / ABOUT ME</p>
+          <h2>Learning today.<br><span class="muted-heading">Creating for tomorrow.</span></h2>
+        </div>
+        <div class="about-copy">
+          <p>I’m Ebisa Indalu, a Software Engineering student at Bule Hora University in Ethiopia. I’m interested in
+            building web applications and strengthening my skills through practice, experimentation, and meaningful
+            projects.</p>
+          <p>This portfolio is a home for my learning journey and selected project work. The project titles below
+            represent areas I’m working on or exploring; links can be added as each project is ready to share.</p>
+          <div class="info-strip">
+            <div class="info-item"><span class="info-icon">⌂</span>
+              <div><small>EDUCATION</small><strong>Bule Hora University</strong><span>Software Engineering</span></div>
+            </div>
+            <div class="info-item"><span class="info-icon">◎</span>
+              <div><small>FOCUS</small><strong>Web Development</strong><span>Learning by building</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">02 / TOOLKIT</p>
+            <h2>Skills & technologies</h2>
+          </div>
+          <p class="section-note">Tools I’m learning and using as I grow as a developer.</p>
+        </div>
+        <div class="skill-groups">
+          <section class="skill-group" aria-labelledby="frontend-skills">
+            <h3 id="frontend-skills">Frontend</h3>
+            <div class="skill-items">
+              <div class="skill-item"><span class="skill-icon" aria-hidden="true">JS</span><span>JavaScript</span></div>
+              <div class="skill-item"><span class="skill-icon" aria-hidden="true">TS</span><span>TypeScript</span></div>
+              <div class="skill-item"><span class="skill-icon" aria-hidden="true">R</span><span>React</span></div>
+              <div class="skill-item"><span class="skill-icon" aria-hidden="true">5</span><span>HTML</span></div>
+              <div class="skill-item"><span class="skill-icon" aria-hidden="true">3</span><span>CSS</span></div>
+              <div class="skill-item"><span class="skill-icon" aria-hidden="true">~</span><span>Tailwind CSS</span>
+              </div>
+              <div class="skill-item"><span class="skill-icon" aria-hidden="true">B</span><span>Bootstrap</span></div>
+            </div>
+          </section>
+          <section class="skill-group" aria-labelledby="backend-skills">
+            <h3 id="backend-skills">Backend</h3>
+            <div class="skill-items">
+              <div class="skill-item"><span class="skill-icon" aria-hidden="true">N</span><span>Node.js</span></div>
+              <div class="skill-item"><span class="skill-icon" aria-hidden="true">EX</span><span>Express.js</span></div>
+              <div class="skill-item"><span class="skill-icon" aria-hidden="true">N</span><span>NestJS</span></div>
+              <div class="skill-item"><span class="skill-icon" aria-hidden="true">PHP</span><span>PHP</span></div>
+              <div class="skill-item"><span class="skill-icon" aria-hidden="true">L</span><span>Laravel</span></div>
+            </div>
+          </section>
+          <section class="skill-group" aria-labelledby="database-skills">
+            <h3 id="database-skills">Database &amp; ORM</h3>
+            <div class="skill-items">
+              <div class="skill-item"><span class="skill-icon" aria-hidden="true">P</span><span>PostgreSQL</span></div>
+              <div class="skill-item"><span class="skill-icon" aria-hidden="true">M</span><span>MySQL</span></div>
+              <div class="skill-item"><span class="skill-icon" aria-hidden="true">◈</span><span>Prisma</span></div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">03 / SELECTED WORK</p>
+            <h2>Projects & explorations</h2>
+          </div>
+          <a class="text-link" href="https://github.com/ebisa-i" target="_blank" rel="noreferrer">Visit my GitHub
+            <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="projects-intro">These are project topics for my portfolio. Add each repository or live demo when it is
+          ready to share.</p>
+        <div class="project-filters" role="group" aria-label="Filter projects">
+          <button class="button button-small button-primary project-filter" type="button" data-filter="all"
+            aria-pressed="true">All</button>
+          <button class="button button-small button-ghost project-filter" type="button" data-filter="web-app"
+            aria-pressed="false">Web apps</button>
+          <button class="button button-small button-ghost project-filter" type="button" data-filter="ecommerce"
+            aria-pressed="false">E-commerce</button>
+          <button class="button button-small button-ghost project-filter" type="button" data-filter="management"
+            aria-pressed="false">Management</button>
+          <button class="button button-small button-ghost project-filter" type="button" data-filter="portfolio"
+            aria-pressed="false">Portfolio</button>
+        </div>
+        <p class="project-filter-status" id="project-filter-status" aria-live="polite">Showing all 4 projects</p>
+        <div class="projects-grid">
+          <article class="project-card" data-category="web-app">
+            <div class="project-visual visual-students">
+              <div class="mock-browser">
+                <div class="mock-bar"><i></i><i></i><i></i></div>
+                <div class="mock-content">
+                  <div class="mock-sidebar"></div>
+                  <div class="mock-main"><b></b><b></b><b></b>
+                    <div class="mock-table"><i></i><i></i><i></i><i></i></div>
+                  </div>
+                </div>
+              </div><span class="visual-index">01</span>
+            </div>
+            <div class="project-body">
+              <div class="project-meta"><span>WEB APPLICATION</span><span>01</span></div>
+              <h3>Student Management System</h3>
+              <p>A project concept for organizing student records and common academic information in one place.</p>
+              <div class="tag-row"><span>HTML</span><span>CSS</span><span>JavaScript</span></div><span
+                class="project-status">Project link to be added</span>
+            </div>
+          </article>
+          <article class="project-card" data-category="ecommerce">
+            <div class="project-visual visual-shop">
+              <div class="shop-layout">
+                <div class="shop-head"></div>
+                <div class="shop-products"><i></i><i></i><i></i></div>
+                <div class="shop-lines"><b></b><b></b><b></b></div>
+              </div><span class="visual-index">02</span>
+            </div>
+            <div class="project-body">
+              <div class="project-meta"><span>E-COMMERCE</span><span>02</span></div>
+              <h3>Ecommerce Web App</h3>
+              <p>A web store concept exploring product browsing, clear product details, and a smooth shopping flow.</p>
+              <div class="tag-row"><span>React</span><span>CSS</span><span>JavaScript</span></div><span
+                class="project-status">Project link to be added</span>
+            </div>
+          </article>
+          <article class="project-card" data-category="management">
+            <div class="project-visual visual-farm">
+              <div class="farm-sun"></div>
+              <div class="farm-hill hill-one"></div>
+              <div class="farm-hill hill-two"></div>
+              <div class="farm-row row-one"></div>
+              <div class="farm-row row-two"></div>
+              <div class="farm-row row-three"></div><span class="visual-index">03</span>
+            </div>
+            <div class="project-body">
+              <div class="project-meta"><span>MANAGEMENT SYSTEM</span><span>03</span></div>
+              <h3>BHU Farm Management</h3>
+              <p>A project concept focused on helping organize farm activities and related information for a university
+                setting.</p>
+              <div class="tag-row"><span>Web</span><span>UI Design</span><span>Development</span></div><span
+                class="project-status">Project link to be added</span>
+            </div>
+          </article>
+          <article class="project-card" data-category="portfolio">
+            <div class="project-visual visual-portfolio">
+              <div class="portfolio-shape shape-one"></div>
+              <div class="portfolio-shape shape-two"></div>
+              <div class="portfolio-type">PORT<br>FOLIO<span>.</span></div><span class="visual-index">04</span>
+            </div>
+            <div class="project-body">
+              <div class="project-meta"><span>PERSONAL WEBSITE</span><span>04</span></div>
+              <h3>Personal Portfolio</h3>
+              <p>This portfolio website introduces my interests, skills, and projects as I continue learning software
+                engineering.</p>
+              <div class="tag-row"><span>HTML</span><span>CSS</span><span>JavaScript</span></div><span
+                class="project-status">Current portfolio</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <p class="eyebrow">04 / CONTACT</p>
+          <h2>Have an idea?<br><span class="muted-heading">Let’s connect.</span></h2>
+          <p>I’m happy to hear about projects, learning opportunities, or thoughtful conversations about technology.</p>
+          <a class="contact-email" href="https://mail.google.com/mail/?view=cm&amp;to=ebisaindalu41%40gmail.com"
+            target="_blank" rel="noreferrer">ebisaindalu41@gmail.com <span aria-hidden="true">↗</span></a>
+          <div class="contact-links"><a href="https://github.com/ebisa-i" target="_blank" rel="noreferrer">GitHub
+              ↗</a><a href="https://www.linkedin.com/in/ebisa-indalu-3b764b37a" target="_blank" rel="noreferrer"
+              aria-label="LinkedIn profile">LinkedIn ↗</a></div>
+        </div>
+        <form class="contact-form" id="contact-form">
+          <div class="form-heading"><span>WRITE A MESSAGE</span><span class="form-mark">↘</span></div>
+          <label for="name">Your name</label><input id="name" name="name" autocomplete="name" required
+            placeholder="Name">
+          <label for="sender-email">Email address</label><input id="sender-email" name="email" type="email"
+            autocomplete="email" required placeholder="you@example.com">
+          <label for="message">Message</label><textarea id="message" name="message" rows="4" required
+            placeholder="Tell me what’s on your mind..."></textarea>
+          <button class="button button-primary submit-button" type="submit">Prepare email <span
+              aria-hidden="true">↗</span></button>
+          <p class="form-note" id="form-note" role="status">This form opens your email app to send the message. No data
+            is stored on this website.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner"><a class="brand footer-brand" href="#home"><span
+          class="brand-mark">EI</span><span>Ebisa <b>Indalu</b></span></a>
+      <p>Designed & built with care.</p><a href="#home" class="back-top">BACK TO TOP ↑</a><span class="copyright">©
+        <span id="year"></span> Ebisa Indalu</span>
+    </div>
+  </footer>
+</body>
+
+</html>
